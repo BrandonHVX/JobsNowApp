@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const PostSchema = new Schema({
   user: {
@@ -12,6 +12,22 @@ const PostSchema = new Schema({
   },
   name: {
     type: String
+  },
+  jobtitle: {
+    type: String
+  },
+  location: {
+    type: String
+  },
+  company: {
+    type: String
+  },
+  jobtype: {
+    type: String
+  },
+  skills: {
+    type: [String],
+    required: true
   },
   avatar: {
     type: String
@@ -50,6 +66,6 @@ const PostSchema = new Schema({
     type: Date,
     default: Date.now
   }
-});
+})
 
-module.exports = Post = mongoose.model('post', PostSchema);
+module.exports = Post = mongoose.model('post', PostSchema)

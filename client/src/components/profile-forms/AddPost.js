@@ -20,7 +20,7 @@ const PostForm = ({ addPost }) => {
     <Fragment>
       <div className="post-form">
         <div className="bg-primary p">
-          <h3>Say Something...</h3>
+          <h3>Post a Job</h3>
         </div>
         <form
           className="form"
@@ -69,9 +69,9 @@ const PostForm = ({ addPost }) => {
           <div className="form-group">
             <select name="jobtype" value={jobtype} onChange={e => onChange(e)}>
               <option>* Select Job Type</option>
-              <option value="Full-Time">Full-Time</option>
-              <option value="Part-Time">Part-Time</option>
-              <option value="Contract">Contract</option>
+              <option value="Developer">Full-Time</option>
+              <option value="Junior Developer">Part-Time</option>
+              <option value="Senior Developer">Contract</option>
             </select>
             <small className="form-text">
               Give us an idea of where you are at in your career

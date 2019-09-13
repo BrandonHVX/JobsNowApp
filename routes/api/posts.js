@@ -29,12 +29,19 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('-password');
 
+      const { jobtitle, company, location, jobtype, skills } = req.body
+
       const newPost = new Post({
         text: req.body.text,
+        jobtitle,
+        skills,
+        jobtype,
+        company,
+        location,
         name: user.name,
         avatar: user.avatar,
         user: req.user.id
-      });
+      })
 
       const post = await newPost.save();
 

@@ -26,14 +26,12 @@ import Badge from '@material-ui/core/Badge'
 
 import InsertCommentIcon from '@material-ui/icons/InsertComment'
 
-const classes = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 345,
-    margin: '90px'
+    maxWidth: 345
   },
   media: {
     height: 0,
-    padding: '20px',
     paddingTop: '56.25%' // 16:9
   },
   expand: {
@@ -77,16 +75,36 @@ const PostItem = ({
       {' '}
       <Link to={`/posts/${_id}`}>
         <CardHeader
+          style={{ fontSize: '40px' }}
           className="post-header"
-          action={location}
           title={jobtitle}
-          subheader={company}
         >
           {location}
         </CardHeader>
-        <CardContent style={{ color: 'black' }}>
+        <CardContent
+          style={{ color: 'black', textAlign: 'left', fontSize: '20px' }}
+        >
           {' '}
-          <p>{text}</p>
+          <p>
+            {' '}
+            <strong>Company: </strong>
+            {company}
+          </p>
+          <p>
+            {' '}
+            <strong>Location: </strong>
+            {location}
+          </p>
+          <p>
+            {' '}
+            <strong>Job Type: </strong>
+            {jobtype}
+          </p>
+          <p>
+            {' '}
+            <strong>Job Summary: </strong>
+            {text}
+          </p>
         </CardContent>
       </Link>
       <CardActions style={{ zIndex: 10 }} disableSpacing>
@@ -130,11 +148,7 @@ const PostItem = ({
               </IconButton>
             </div>
           </Fragment>
-        )}{' '}
-        <IconButton style={{ fontSize: '10px', marginLeft: 'auto' }}>
-          {' '}
-          Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
-        </IconButton>
+        )}
       </CardActions>
     </Card>
   </div>
