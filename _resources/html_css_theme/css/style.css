@@ -214,10 +214,6 @@ img {
   border: #ccc solid 1px;
 }
 
-.round-img {
-  border-radius: 50%;
-}
-
 .line {
   height: 1px;
   background: #ccc;
@@ -350,6 +346,13 @@ button {
 }
 
 /* Profiles Page */
+
+.profiles {
+  display: flex;
+
+  flex-wrap: wrap;
+}
+
 .profile {
   display: grid;
   grid-template-columns: 2fr 4fr 2fr;

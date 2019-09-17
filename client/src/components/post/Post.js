@@ -43,9 +43,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>
-              <ViewItem post={post} showActions={false} />
-            </Paper>
+            <ViewItem post={post} showActions={false} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>

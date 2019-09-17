@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { logout } from '../../actions/auth'
-import cooljobs from '../../img/COOLJOBS.png'
+import jobsnow from '../../img/JOBSNOW.png'
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <nav className="navbar " style={{ backgroundColor: '#0d94c5' }}>
-      <h1>
-        <Link to="/">
-          <img src={cooljobs} style={{ width: '90px' }} />
-        </Link>
-      </h1>
+    <nav
+      className="navbar "
+      style={{ backgroundColor: 'var(--primary-color)' }}
+    >
+      <Link to="/">
+        <img src={jobsnow} style={{ width: '90px' }} />
+      </Link>
 
       <ul>
         <li>

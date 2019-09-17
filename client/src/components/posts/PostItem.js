@@ -72,8 +72,8 @@ const PostItem = ({
   },
   showActions
 }) => (
-  <div className="cards">
-    <Card>
+  <div className="post">
+    <Card className="cards">
       {' '}
       <Link to={`/posts/${_id}`}>
         <CardHeader
@@ -84,7 +84,7 @@ const PostItem = ({
         >
           {location}
         </CardHeader>
-        <CardContent style={{ color: 'black' }}>
+        <CardContent>
           {' '}
           <p>{text}</p>
         </CardContent>
@@ -103,7 +103,12 @@ const PostItem = ({
                   badgeContent={likes.length > 0 && <span>{likes.length}</span>}
                 >
                   {' '}
-                  <FavoriteIcon onClick={() => addLike(_id)} />{' '}
+                  <FavoriteIcon
+                    style={{
+                      color: 'var(--primary-color)'
+                    }}
+                    onClick={() => addLike(_id)}
+                  />{' '}
                 </Badge>
               </IconButton>
 
@@ -114,7 +119,11 @@ const PostItem = ({
                     comments.length > 0 && <span>{comments.length}</span>
                   }
                 >
-                  <InsertCommentIcon style={{ color: 'black' }} />
+                  <InsertCommentIcon
+                    style={{
+                      color: 'var(--primary-color)'
+                    }}
+                  />
                 </Badge>
               </IconButton>
               <IconButton aria-label="show 4 new mails">

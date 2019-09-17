@@ -70,7 +70,7 @@ const PostItem = ({
   },
   showActions
 }) => (
-  <div className="cards">
+  <div className="cards-view">
     <Card>
       {' '}
       <Link to={`/posts/${_id}`}>

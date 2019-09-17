@@ -1,8 +1,8 @@
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
-  --dark-color: #343a40;
-  --light-color: #f4f4f4;
+  --primary-color: #055587;
+  --dark-color: #02026a;
+  --light-color: #029597;
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
@@ -13,16 +13,21 @@
   padding: 0;
 }
 
+.center {
+  display: flex;
+  text-align: center;
+}
+
 body {
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
+  background-color: var(--primary-color);
   color: #333;
 }
 
 a {
-  color: var(--primary-color);
+  color: black;
   text-decoration: none;
 }
 
@@ -40,7 +45,7 @@ img {
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  margin-top: 6rem;
+  margin-top: 8rem;
   margin-bottom: 3rem;
 }
 
@@ -67,11 +72,11 @@ img {
 }
 
 .text-primary {
-  color: var(--primary-color);
+  color: var(--light-color);
 }
 
 .text-dark {
-  color: var(--dark-color);
+  color: var(--light-color);
 }
 
 /* Padding */
@@ -218,6 +223,17 @@ img {
   border-radius: 50%;
 }
 
+.MuiCardMedia-root .img-profile {
+  display: flex;
+  justify-content: center;
+}
+.round-img-profile {
+  border-radius: 50%;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+}
+
 .line {
   height: 1px;
   background: #ccc;
@@ -303,7 +319,8 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 2rem;
+  padding: 0.1rem 2rem;
+  margin-bottom: 2rem;
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -318,12 +335,12 @@ button {
 
 .navbar a {
   color: #fff;
-  padding: 0.45rem;
+  padding: 0.5rem;
   margin: 0 0.25rem;
 }
 
 .navbar a:hover {
-  color: var(--primary-color);
+  color: var(--light-color);
 }
 
 .navbar .welcome span {
@@ -333,7 +350,7 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  background: url('./img/cooljobsbg.jpg') no-repeat center center/cover;
   height: 100vh;
 }
 
@@ -350,9 +367,10 @@ button {
 }
 
 /* Profiles Page */
+
 .profile {
   display: grid;
-  grid-template-columns: 2fr 4fr 2fr;
+  grid-template-columns: 4fr 4fr;
   align-items: center;
   grid-gap: 2rem;
   padding: 1rem;
@@ -386,16 +404,19 @@ button {
 
 .profile-top .icons a {
   color: #fff;
-  margin: 0 0.3rem;
+  margin: 0 0.8rem;
 }
 
 .profile-top .icons a:hover {
-  color: var(--dark-color);
+  color: var(--primary-color);
 }
 
 .profile-about {
   grid-area: about;
   text-align: center;
+}
+.profile-card-header {
+  background-color: #38a1f3;
 }
 
 .profile-about .skills {
@@ -460,14 +481,71 @@ button {
 }
 
 .post {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-gap: 2rem;
+  color: #333;
   align-items: center;
+}
+.cards {
+  position: relative;
+  border: 2px solid transparent;
+  display: flex;
+  margin: 20px;
+  color: #333;
+  border-radius: 7px;
+  z-index: 0;
+  flex-direction: column;
+}
+.cards-view {
+  position: relative;
+  border: 2px solid var(--light-color);
+
+  display: flex;
+  margin: 20px;
+  color: #333;
+  border-radius: 7px;
+  z-index: 0;
+  flex-direction: column;
+}
+
+.cards-view .post-header {
+  border-bottom-right-radius: 60px;
+  transition: 0.2s;
+  background-color: var(--light-color);
+  color: #ffffff;
+}
+
+.cards:hover {
+  border: 2px solid var(--light-color);
+  border-radius: 7px;
+  margin: 20px;
+  transition: 0.2s;
+}
+.cards:hover .post-header {
+  border-bottom-right-radius: 60px;
+  transition: 0.2s;
+  background-color: var(--light-color);
+  color: #ffffff;
+}
+.cards:hover a {
+  border-radius: 7px;
+
+  transition: 0.2s;
+
+  color: #000000;
+}
+
+.delete-link:hover {
+  color: red;
+}
+
+.post-header {
+  color: var(--light-color);
+
+  transition: 0.2s;
+  border-bottom-right-radius: 60px;
 }
 
 .post > div:first-child {
-  text-align: center;
+  text-align: left;
 }
 
 .post img {
@@ -573,5 +651,11 @@ button {
   .post a,
   .post button {
     padding: 0.3rem 0.4rem;
+  }
+  .post-header {
+    color: var(--light-color);
+    font-weight: bold;
+    font-size: 0.8rem;
+    border-bottom-right-radius: 60px;
   }
 }
