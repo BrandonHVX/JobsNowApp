@@ -78,9 +78,17 @@ const PostItem = ({
       <Link to={`/posts/${_id}`}>
         <CardHeader
           className="post-header"
-          action={location}
+          action={
+            <div style={{ color: 'white', fontWeight: 'lighter' }}>
+              {location}
+            </div>
+          }
           title={jobtitle}
-          subheader={company}
+          subheader={
+            <div style={{ color: 'white', fontWeight: 'lighter' }}>
+              {company}
+            </div>
+          }
         >
           {location}
         </CardHeader>

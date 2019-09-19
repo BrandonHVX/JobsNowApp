@@ -22,7 +22,7 @@ body {
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: var(--primary-color);
+  background-color: rgb(235, 233, 233);
   color: #333;
 }
 
@@ -223,10 +223,6 @@ img {
   border-radius: 50%;
 }
 
-.MuiCardMedia-root .img-profile {
-  display: flex;
-  justify-content: center;
-}
 .round-img-profile {
   border-radius: 50%;
   z-index: 50;
@@ -486,7 +482,7 @@ button {
 }
 .cards {
   position: relative;
-  border: 2px solid transparent;
+  border: 2px solid var(--primary-color);
   display: flex;
   margin: 20px;
   color: #333;
@@ -497,7 +493,6 @@ button {
 .cards-view {
   position: relative;
   border: 2px solid var(--light-color);
-
   display: flex;
   margin: 20px;
   color: #333;
@@ -538,8 +533,8 @@ button {
 }
 
 .post-header {
-  color: var(--light-color);
-
+  color: white;
+  background-color: var(--primary-color);
   transition: 0.2s;
   border-bottom-right-radius: 60px;
 }
@@ -652,8 +647,12 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+
+  .MuiTypography-colorTextSecondary {
+    color: rgba(255, 0, 0, 0.54);
+  }
   .post-header {
-    color: var(--light-color);
+    color: white;
     font-weight: bold;
     font-size: 0.8rem;
     border-bottom-right-radius: 60px;
