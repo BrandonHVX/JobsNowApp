@@ -1,20 +1,20 @@
-import React, { useState, Fragment } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { addPost } from '../../actions/post'
+import React, { useState, Fragment } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { addPost } from "../../actions/post";
 
 const PostForm = ({ addPost }) => {
   const [formData, setFormData] = useState({
-    jobtitle: '',
-    company: '',
-    jobtype: '',
-    location: '',
-    text: ''
-  })
+    jobtitle: "",
+    company: "",
+    jobtype: "",
+    location: "",
+    text: ""
+  });
 
-  const { text, jobtitle, jobtype, company, location } = formData
+  const { text, jobtitle, jobtype, company, location } = formData;
   const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <Fragment>
@@ -25,8 +25,8 @@ const PostForm = ({ addPost }) => {
         <form
           className="form"
           onSubmit={e => {
-            e.preventDefault()
-            addPost(formData)
+            e.preventDefault();
+            addPost(formData);
           }}
         >
           <div className="form-group">
@@ -69,9 +69,9 @@ const PostForm = ({ addPost }) => {
           <div className="form-group">
             <select name="jobtype" value={jobtype} onChange={e => onChange(e)}>
               <option>* Select Job Type</option>
-              <option value="Developer">Full-Time</option>
-              <option value="Junior Developer">Part-Time</option>
-              <option value="Senior Developer">Contract</option>
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Contract">Contract</option>
             </select>
             <small className="form-text">
               Give us an idea of where you are at in your career
@@ -81,14 +81,14 @@ const PostForm = ({ addPost }) => {
         </form>
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
 PostForm.propTypes = {
   addPost: PropTypes.func.isRequired
-}
+};
 
 export default connect(
   null,
   { addPost }
-)(PostForm)
+)(PostForm);
