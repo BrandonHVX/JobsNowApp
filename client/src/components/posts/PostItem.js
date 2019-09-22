@@ -94,7 +94,7 @@ const PostItem = ({
         </CardHeader>
         <CardContent>
           {' '}
-          <p>{text}</p>
+          <p className="my-1">{text}</p>
         </CardContent>
       </Link>
       <CardActions style={{ zIndex: 10 }} disableSpacing>

@@ -25,9 +25,14 @@ const PostSchema = new Schema({
   jobtype: {
     type: String
   },
+  salary: {
+    type: String
+  },
+  duties: {
+    type: [String]
+  },
   skills: {
-    type: [String],
-    required: true
+    type: [String]
   },
   avatar: {
     type: String
@@ -51,6 +56,9 @@ const PostSchema = new Schema({
         required: true
       },
       name: {
+        type: String
+      },
+      status: {
         type: String
       },
       avatar: {
