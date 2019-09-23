@@ -7,6 +7,25 @@ import {
   getCurrentProfile,
   deleteAccount
 } from "../../actions/profile";
+import TextField from "@material-ui/core/TextField";
+import Input from "@material-ui/core/Input";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    backgroundColor: "#ffffff"
+  },
+  dense: {
+    marginTop: theme.spacing(2)
+  },
+  menu: {
+    width: 200
+  }
+}));
 
 const EditProfile = ({
   profile: { profile, loading },
@@ -15,6 +34,7 @@ const EditProfile = ({
   getCurrentProfile,
   history
 }) => {
+  const classes = useStyles();
   const [formData, setFormData] = useState({
     company: "",
     website: "",
@@ -83,7 +103,7 @@ const EditProfile = ({
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
-        <div className="form-group">
+        <div>
           <select name="status" value={status} onChange={e => onChange(e)}>
             <option>* Select Professional Status</option>
             <option value="Developer">Developer</option>
@@ -99,13 +119,27 @@ const EditProfile = ({
             Give us an idea of where you are at in your career
           </small>
         </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Company"
-            name="company"
+        <div>
+          <Input
+            id="multiline-flexible"
+            label="Company"
+            multiline
+            rowsMax="15"
+            fullWidth="true"
             value={company}
             onChange={e => onChange(e)}
+            className={classes.textField}
+            variant="outlined"
+          />
+          <Input
+            placeholder="Placeholder"
+            className={classes.input}
+            value={company}
+            name="company"
+            onChange={e => onChange(e)}
+            inputProps={{
+              "aria-label": "description"
+            }}
           />
           <small className="form-text">
             Could be your own company or one you work for
