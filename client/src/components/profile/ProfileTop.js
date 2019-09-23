@@ -1,6 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const avatarpic = {
+  width: "150px",
+  borderRadius: "50%"
+};
+
 const ProfileTop = ({
   profile: {
     status,
@@ -13,8 +18,8 @@ const ProfileTop = ({
 }) => {
   return (
     <div className="profile-top bg-light p-2">
-      <img className="round-img my-1" src={avatar} alt="" />
-      <h1 className="large">{name}</h1>
+      <img style={avatarpic} src={avatar} alt="" />
+      <h1>{name}</h1>
       <p className="lead">
         {status} {company && <span> at {company}</span>}
       </p>
