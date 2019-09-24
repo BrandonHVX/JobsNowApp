@@ -1,31 +1,73 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React, { Fragment, useState, useEffect } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import {
   createProfile,
   getCurrentProfile,
   deleteAccount
-} from "../../actions/profile";
-import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
-import { makeStyles } from "@material-ui/core/styles";
+} from '../../actions/profile'
+import TextField from '@material-ui/core/TextField'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import { fade, withStyles, makeStyles, createMuiTheme } from '@material-ui/core/styles';
+
+
+const CssTextField = withStyles({
+  root: {
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#055587',
+      },
+      '&:hover fieldset': {
+        borderColor: 'green',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'green',
+      },
+    },
+  },
+})(TextField);
 
 const useStyles = makeStyles(theme => ({
   container: {
-    display: "flex",
-    flexWrap: "wrap"
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   textField: {
-    backgroundColor: "#ffffff"
+    backgroundColor: '#ffffff',
+
   },
   dense: {
     marginTop: theme.spacing(2)
   },
   menu: {
     width: 200
-  }
-}));
+  },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 190,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+
+}))
+
+
 
 const EditProfile = ({
   profile: { profile, loading },
@@ -35,42 +77,52 @@ const EditProfile = ({
   history
 }) => {
   const classes = useStyles();
-  const [formData, setFormData] = useState({
-    company: "",
-    website: "",
-    location: "",
-    status: "",
-    skills: "",
-    githubusername: "",
-    bio: "",
-    twitter: "",
-    facebook: "",
-    linkedin: "",
-    youtube: "",
-    instagram: ""
+  const [state, setState] = React.useState({
+    status: ''
   });
 
-  const [displaySocialInputs, toggleSocialInputs] = useState(false);
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  React.useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
+
+  const [formData, setFormData] = useState({
+    company: '',
+    website: '',
+    location: '',
+    status: '',
+    skills: '',
+    githubusername: '',
+    bio: '',
+    twitter: '',
+    facebook: '',
+    linkedin: '',
+    youtube: '',
+    instagram: ''
+  })
+
+  const [displaySocialInputs, toggleSocialInputs] = useState(false)
 
   useEffect(() => {
-    getCurrentProfile();
+    getCurrentProfile()
 
     setFormData({
-      company: loading || !profile.company ? "" : profile.company,
-      website: loading || !profile.website ? "" : profile.website,
-      location: loading || !profile.location ? "" : profile.location,
-      status: loading || !profile.status ? "" : profile.status,
-      skills: loading || !profile.skills ? "" : profile.skills.join(","),
+      company: loading || !profile.company ? '' : profile.company,
+      website: loading || !profile.website ? '' : profile.website,
+      location: loading || !profile.location ? '' : profile.location,
+      status: loading || !profile.status ? '' : profile.status,
+      skills: loading || !profile.skills ? '' : profile.skills.join(','),
       githubusername:
-        loading || !profile.githubusername ? "" : profile.githubusername,
-      bio: loading || !profile.bio ? "" : profile.bio,
-      twitter: loading || !profile.social ? "" : profile.social.twitter,
-      facebook: loading || !profile.social ? "" : profile.social.facebook,
-      linkedin: loading || !profile.social ? "" : profile.social.linkedin,
-      youtube: loading || !profile.social ? "" : profile.social.youtube,
-      instagram: loading || !profile.social ? "" : profile.social.instagram
-    });
-  }, [loading, getCurrentProfile]);
+        loading || !profile.githubusername ? '' : profile.githubusername,
+      bio: loading || !profile.bio ? '' : profile.bio,
+      twitter: loading || !profile.social ? '' : profile.social.twitter,
+      facebook: loading || !profile.social ? '' : profile.social.facebook,
+      linkedin: loading || !profile.social ? '' : profile.social.linkedin,
+      youtube: loading || !profile.social ? '' : profile.social.youtube,
+      instagram: loading || !profile.social ? '' : profile.social.instagram
+    })
+  }, [loading, getCurrentProfile])
 
   const {
     company,
@@ -85,16 +137,19 @@ const EditProfile = ({
     linkedin,
     youtube,
     instagram
-  } = formData;
+  } = formData
 
   const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value })
 
   const onSubmit = e => {
-    e.preventDefault();
-    createProfile(formData, history, true);
-  };
+    e.preventDefault()
+    createProfile(formData, history, true)
+  }
+  const handleChange = name => e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
 
+  };
   return (
     <Fragment>
       <h1 className="large text-primary">Edit Your Profile</h1>
@@ -104,78 +159,115 @@ const EditProfile = ({
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div>
-          <select name="status" value={status} onChange={e => onChange(e)}>
-            <option>* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
-            <option value="Other">Other</option>
-          </select>
+
+          <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel ref={inputLabel} htmlFor="outlined-age-native-simple">
+              Age
+        </InputLabel>
+            <Select
+              native
+              value={status}
+              name="status"
+              onChange={e => onChange(e)}
+              className={classes.textField}
+              labelWidth={labelWidth}
+              inputProps={{
+                name: 'status',
+                id: 'outlined-age-native-simple',
+              }}
+            >
+              <option value="" />
+              <option value="Developer">Developer</option>
+              <option value="Junior Developer">Junior Developer</option>
+              <option value="Senior Developer">Senior Developer</option>
+              <option value="Manager">Manager</option>
+              <option value="Student or Learning">Student or Learning</option>
+              <option value="Instructor">Instructor or Teacher</option>
+              <option value="Intern">Intern</option>
+              <option value="Other">Other</option>
+            </Select>
+          </FormControl>
           <small className="form-text">
             Give us an idea of where you are at in your career
           </small>
         </div>
-        <div>
-          <Input
+        <div className="form-group">
+
+          <CssTextField
             id="multiline-flexible"
             label="Company"
-            multiline
-            rowsMax="15"
-            fullWidth="true"
-            value={company}
-            onChange={e => onChange(e)}
-            className={classes.textField}
-            variant="outlined"
-          />
-          <Input
-            placeholder="Placeholder"
-            className={classes.input}
             value={company}
             name="company"
+
+
+            fullWidth
+            className={classes.textField}
             onChange={e => onChange(e)}
-            inputProps={{
-              "aria-label": "description"
-            }}
+
+            variant="outlined"
+
           />
+
           <small className="form-text">
             Could be your own company or one you work for
           </small>
         </div>
         <div className="form-group">
-          <input
-            type="text"
-            placeholder="Website"
-            name="website"
+
+
+          <CssTextField
+            id="multiline-flexible"
+            label="Website"
             value={website}
+            name="website"
+
+
+            fullWidth
+            className={classes.textField}
             onChange={e => onChange(e)}
+
+            variant="outlined"
+
           />
           <small className="form-text">
             Could be your own or a company website
           </small>
         </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Location"
-            name="location"
+        <div >
+
+          <CssTextField
+            id="multiline-flexible"
+            label="Location"
             value={location}
+            name="location"
+
+
+            fullWidth
+            className={classes.textField}
             onChange={e => onChange(e)}
+
+            variant="outlined"
+
           />
           <small className="form-text">
             City & state suggested (eg. Boston, MA)
           </small>
         </div>
         <div className="form-group">
-          <input
-            type="text"
-            placeholder="* Skills"
-            name="skills"
+
+          <CssTextField
+            id="multiline-flexible"
+            label="Skills"
             value={skills}
+            name="skills"
+
+
+            fullWidth
+            className={classes.textField}
             onChange={e => onChange(e)}
+
+            variant="outlined"
+
           />
           <small className="form-text">
             Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
@@ -183,11 +275,20 @@ const EditProfile = ({
         </div>
 
         <div className="form-group">
-          <textarea
-            placeholder="A short bio of yourself"
-            name="bio"
+
+          <CssTextField
+            id="multiline-flexible"
+            label="Bio"
             value={bio}
+            name="bio"
+
+            multiline
+            fullWidth
+            className={classes.textField}
             onChange={e => onChange(e)}
+
+            variant="outlined"
+
           />
           <small className="form-text">Tell us a little about yourself</small>
         </div>
@@ -266,7 +367,7 @@ const EditProfile = ({
         <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
         </Link>
-      </form>{" "}
+      </form>{' '}
       {profile !== null ? (
         <Fragment>
           <div className="my-2">
@@ -276,24 +377,24 @@ const EditProfile = ({
           </div>
         </Fragment>
       ) : (
-        <Fragment></Fragment>
-      )}
+          <Fragment></Fragment>
+        )}
     </Fragment>
-  );
-};
+  )
+}
 
 EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
-};
+}
 
 const mapStateToProps = state => ({
   profile: state.profile
-});
+})
 
 export default connect(
   mapStateToProps,
   { createProfile, getCurrentProfile, deleteAccount }
-)(withRouter(EditProfile));
+)(withRouter(EditProfile))
