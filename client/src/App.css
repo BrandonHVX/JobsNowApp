@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+ 
   font-size: 1rem;
   line-height: 1.6;
   background-color: rgb(248, 240, 240);
@@ -474,11 +474,13 @@ button {
 .post-form .post-form-header {
   background: var(--primary-color);
   padding: 0.5rem;
+  text-decoration: none;
 }
 
 .post {
   color: #333;
   align-items: center;
+  text-decoration: none;
 }
 .cards {
   position: relative;
@@ -489,6 +491,7 @@ button {
   border-radius: 7px;
   z-index: 0;
   flex-direction: column;
+  text-decoration: none;
 }
 .cards-view {
   position: relative;
@@ -500,6 +503,7 @@ button {
   z-index: 0;
   flex-direction: column;
   background-color: #fff;
+  text-decoration: none;
 }
 .comment-view {
   position: relative;
@@ -533,7 +537,7 @@ button {
 }
 .cards:hover a {
   border-radius: 7px;
-
+  text-decoration: none;
   transition: 0.2s;
 
   color: #000000;

@@ -156,14 +156,8 @@ const EditProfile = ({
       <p className="lead">
         <i className="fas fa-user" /> Add some changes to your profile
       </p>
-
-
-
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
-
-
-
         <div>
 
           <FormControl variant="outlined" className={classes.formControl}>

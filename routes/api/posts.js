@@ -43,7 +43,7 @@ router.post(
         text: req.body.text,
         jobtitle,
         skills,
-        salary: [''],
+        salary,
         duties,
         jobtype,
         company,
