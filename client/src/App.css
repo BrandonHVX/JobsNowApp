@@ -19,7 +19,7 @@
 }
 
 body {
- 
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   font-size: 1rem;
   line-height: 1.6;
   background-color: rgb(248, 240, 240);
@@ -65,10 +65,12 @@ img {
 .lead {
   font-size: 1rem;
   margin-bottom: 1rem;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 .text-center {
   text-align: center;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 .text-primary {
@@ -316,6 +318,7 @@ button {
 
 /* Navbar */
 .navbar {
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
