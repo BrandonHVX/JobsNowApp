@@ -139,7 +139,7 @@ const Dashboard = ({
                       <div class="col-8">
                         <h3 class="mb-0">My account</h3>
                       </div>
-                      <div class="text-center">
+                      <div >
                         <DashboardActions />
                       </div>
                     </div>

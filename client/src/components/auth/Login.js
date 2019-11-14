@@ -46,7 +46,8 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-light-color">Sign In</h1>
+
+      <h1 className="large text" style={{ color: 'white' }}>Sign In</h1>
       <p className="lead">
         <i className="fas fa-user" /> Sign Into Your Account
       </p>
@@ -77,6 +78,8 @@ const Login = ({ login, isAuthenticated }) => {
       <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
+
+
     </Fragment>
   )
 }
